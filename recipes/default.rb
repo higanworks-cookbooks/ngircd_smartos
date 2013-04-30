@@ -25,7 +25,7 @@ end
 remote_file ::File.join(node['ngircd']['working_dir'], node['ngircd']['arch_file'])   do
   action :create_if_missing
   source node['ngircd']['site_url'] + node['ngircd']['arch_file']
-  notifies :run, 'bash[make and install ngircd]'
+  notifies :run, 'bash[make and install ngircd]', :immediately
 end
 
 smf 'ngircd' do
