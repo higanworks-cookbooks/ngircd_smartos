@@ -39,6 +39,9 @@ def load_current_resource
   @current_resource = Chef::Resource::NgircdSmartosBinary.new(new_resource.name)
   if ::File.exist?(::File.join(node['ngircd']['prefix_dir'], 'sbin/ngircd'))
     @current_resource.version `ngircd -V`.split[1].split('-')[0]
-    @current_resource.options `ngircd -V`.split[1].split("-")[1].split("+") 
+    @current_resource.options `ngircd -V`.split[1].split("-")[1].split("+")
+  else
+    @current_resource.version '0.0'
+    @current_resource.options []
   end
 end
