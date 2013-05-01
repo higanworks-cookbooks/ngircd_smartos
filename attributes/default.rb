@@ -2,7 +2,7 @@
 default['ngircd']['prefix_dir'] = '/opt/local'
 default['ngircd']['conf_dir'] = ::File.join(node['ngircd']['prefix_dir'], 'etc')
 default['ngircd']['version'] = '20.2'
-default['ngircd']['config_options'] = ["IRCPLUS", "SSL", "SYSLOG", "ZLIB"]
+default['ngircd']['config_options'] = ["SSL"]
 
 
 ## repository

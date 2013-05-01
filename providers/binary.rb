@@ -3,7 +3,7 @@ action :create do
     action :create
   end
 
-  unless new_resource.version == @current_resource.version
+  unless new_resource.version == @current_resource.version and new_resource.options - @current_resource.options == []
     ::Chef::Log.info "Install ngircd"
     node.set['ngircd']['arch_file'] = "ngircd-#{new_resource.version}.tar.gz"
 
