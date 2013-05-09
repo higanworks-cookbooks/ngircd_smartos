@@ -1,0 +1,90 @@
+## This file is modified by chef for <%= node[:fqdn] %>
+## Don't edit manually!!
+
+[Global]
+    Name = <%= @g_name %>
+    AdminInfo1 = <%= @g_desc %>
+    AdminInfo2 = <%= @g_location %>
+    AdminEMail = <%= @g_email %>
+    Info = Server Info Text
+    Listen = <%= @g_listen %>
+    ;MotdFile = /opt/local/etc/ngircd.motd
+    ;MotdPhrase = "Hello world!"
+    <% if @g_password %>
+    Password = <%= @g_password %>
+    <% end %>
+    PidFile = /var/run/ngircd/ngircd.pid
+    <% unless @g_ports == [] %>
+    Ports = <%= @g_ports.join(',') %>
+    <% end %>
+    ;ServerGID = 65534
+    ;ServerUID = 65534
+
+[Limits]
+    ;ConnectRetry = 60
+    MaxConnections = <%= @l_maxcons %>
+    MaxConnectionsIP = <%= @l_maxcons_ip %>
+    MaxJoins = <%= @l_maxjoin %>
+    MaxNickLength = <%= @l_maxnick %>>
+    ;MaxListSize = 100
+    PingTimeout = 120
+    PongTimeout = 60
+
+[Options]
+    ;AllowRemoteOper = no
+    ;ChrootDir = /var/empty
+    ;CloakHost = cloaked.host
+    ;CloakHostModeX = cloaked.user
+    ;CloakHostSalt = abcdefghijklmnopqrstuvwxyz
+    ;CloakUserToNick = yes
+    ;ConnectIPv6 = yes
+    ;ConnectIPv4 = yes
+    DNS = no
+    Ident = no
+    ;MorePrivacy = no
+    ;NoticeAuth = no
+    ;OperCanUseMode = no
+    ;OperChanPAutoOp = yes
+    ;OperServerMode = no
+    PAM = no
+    ;PAMIsOptional = no
+    ;PredefChannelsOnly = no
+    ;RequireAuthPing = no
+    ;ScrubCTCP = no
+    ;SyslogFacility = local5
+    ;WebircPassword = xyz
+
+;[SSL]
+    ;CertFile = /opt/local/etc/ssl/server-cert.pem
+    ;DHFile = /opt/local/etc/ssl/dhparams.pem
+    ;KeyFile = /opt/local/etc/ssl/server-key.pem
+    ;KeyFilePassword = secret
+    ;Ports = 6697, 9999
+
+[Operator]
+    ;Name = TheOper
+    ;Password = ThePwd
+    ;Mask = *!ident@somewhere.example.com
+
+[Server]
+    ;Name = irc2.example.net
+    ;Host = connect-to-host.example.net
+    ;Bind = 10.0.0.1
+    ;Port = 6667
+    ;MyPassword = MySecret
+    ;PeerPassword = PeerSecret
+    ;Group = 123
+    ;Passive = no
+    ;SSLConnect = yes
+    ;ServiceMask = *Serv,Global
+
+
+[Channel]
+    ;Name = #TheName
+    ;Topic = a great topic
+    ;Modes = tnk
+    ;Key = Secret
+    ;KeyFile = /opt/local/etc/#chan.key
+    ;MaxUsers = 23
+
+# -eof-
